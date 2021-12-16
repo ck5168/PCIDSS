@@ -2,26 +2,25 @@
    
 <%@ include file="/html/CM/header.jsp" %> 
 
-<!-- Import resource¡A·s¼W½Ğ©ñ¤U­±  -->
+<!-- Import resourceï¼Œæ–°å¢è«‹æ”¾ä¸‹é¢  -->
 <%@ page import="java.util.*"%>  
-<%@ page import="com.cathay.common.util.STRING"%>
-<%@ page import="com.cathay.common.util.page.SelectOptUtil"%>
-<%@ page import="com.cathay.common.util.FieldOptionList"%>
-<%@ page import="com.cathay.common.util.trx.RespCtxUtil"%>
+<%@ page import="com.ck.common.util.STRING"%>
+<%@ page import="com.ck.common.util.page.SelectOptUtil"%>
+<%@ page import="com.ck.common.util.FieldOptionList"%>
+<%@ page import="com.ck.common.util.trx.RespCtxUtil"%>
 <%@ page import="com.igsapp.wibc.dataobj.Context.ResponseContext"%>
 <%@ page import="com.igsapp.wibc.dataobj.html.HttpTxContext" %>
 <%@ page import="com.igsapp.wibc.dataobj.html.HttpResponseContext" %>
 <%@ page import="org.apache.log4j.*"%>
 
 <!--
-µ{¦¡¡GAVE05800.jsp  
-§@ªÌ¡GJeff Tseng
-¥\¯à¡G¼v¹³ÂkÀÉ
-§¹¦¨¡G2007/01/11
-§ó·s¡G
+ç¨‹å¼ï¼šAVE05800.jsp 
+åŠŸèƒ½ï¼šå½±åƒæ­¸æª”
+å®Œæˆï¼š2007/01/11
+æ›´æ–°ï¼š
 -->
 
-<!-- JSP Sriptlet ¡A·s¼W½Ğ©ñ¤U­±ªº-->
+<!-- JSP Sriptlet ï¼Œæ–°å¢è«‹æ”¾ä¸‹é¢çš„-->
 <%!
 	static Logger log = Logger.getLogger("AVE05800.jsp");
 %>
@@ -31,13 +30,13 @@
 	HttpResponseContext resp = new HttpResponseContext(request);
 	RespCtxUtil ctxUtil=new RespCtxUtil(resp);	
 	
-	String status = (String)resp.getOutputData("status");				// ­¶­± Button «ö¶s±±¨î
+	String status = (String)resp.getOutputData("status");				// é é¢ Button æŒ‰éˆ•æ§åˆ¶
 	String IMG_KIND_VALUE ="";
 	String BCHNO_VALUE = "";
-	SelectOptUtil IMG_KIND_OPT = ctxUtil.getOutputData_OptionList("IMG_KIND_OPT");	//¤å¥ó¥N½X
-	SelectOptUtil BCHNO_OPT = ctxUtil.getOutputData_OptionList("BCHNO_OPT");		//ÂkÀÉ§å¸¹
+	SelectOptUtil IMG_KIND_OPT = ctxUtil.getOutputData_OptionList("IMG_KIND_OPT");	//æ–‡ä»¶ä»£ç¢¼
+	SelectOptUtil BCHNO_OPT = ctxUtil.getOutputData_OptionList("BCHNO_OPT");		//æ­¸æª”æ‰¹è™Ÿ
 	
-	Map jvm = (Map)ctxt.getValue("jvm");						//µe­±¬d¸ßµ²ªG
+	Map jvm = (Map)ctxt.getValue("jvm");						//ç•«é¢æŸ¥è©¢çµæœ
 	if(jvm!=null){
 		pageContext.setAttribute("jvm",jvm);			
 		IMG_KIND_VALUE = jvm.get("IMG_KIND_VALUE").toString();
@@ -52,7 +51,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=big5">
 	<title></title>
-	<!--¶×¤J¥~³¡Javascript »P css, ·s¼W½Ğ©ñ¤U­±-->
+	<!--åŒ¯å…¥å¤–éƒ¨Javascript èˆ‡ css, æ–°å¢è«‹æ”¾ä¸‹é¢-->
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/AlertHandler.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/PageControllerObj.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/pageController.js"></script>
@@ -61,23 +60,23 @@
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/utility.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/ajax/prototype.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/ajax/CSRUtil.js"></script>
-	<script language="JavaScript" src="<%=htmlBase%>/AV/js/html.js"></script>    <!-- HTML  ªº¤½¥Îµ{¦¡-->
-	<script language="JavaScript" src="<%=htmlBase%>/CM/js/HotKey.js"></script><!--¥\¯àÁäªº¨Ï¥Î-->
+	<script language="JavaScript" src="<%=htmlBase%>/AV/js/html.js"></script>    <!-- HTML  çš„å…¬ç”¨ç¨‹å¼-->
+	<script language="JavaScript" src="<%=htmlBase%>/CM/js/HotKey.js"></script><!--åŠŸèƒ½éµçš„ä½¿ç”¨-->
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/ui/popupWin.js"></script>
 	<link href="<%=cssBase%>/cm.css" rel="stylesheet" type="text/css">
 </head>
 <body bgcolor="#F0FBC6" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad='initApp();' onResize='fix()' onScroll="fix()" > 
 
 
-<!--¦¹ºô­¶¦Û«Ø¨Ï¥ÎªºJavaScript ©ñ¤U­± -->
+<!--æ­¤ç¶²é è‡ªå»ºä½¿ç”¨çš„JavaScript æ”¾ä¸‹é¢ -->
 
 <script language="JavaScript" type="text/JavaScript">
 var AVE05800 = {dispatcher: '/AVWeb/servlet/HttpDispatcher'};	//Ajax
 html = new html();
 //******************************************************************************
-<!--­×¥¿µe­±-->
+<!--ä¿®æ­£ç•«é¢-->
 function stat(){
-	//µù:firefox 3 ¤w¸g¤£¤ä´©window.onresize¡A¼È¤£³B²z
+	//è¨»:firefox 3 å·²ç¶“ä¸æ”¯æ´window.onresizeï¼Œæš«ä¸è™•ç†
 	if(document.bar1!=null){
 		var a = pageYOffset+window.innerHeight-document.bar1.document.height-15;
 		document.bar1.top = a;
@@ -85,10 +84,10 @@ function stat(){
 	setTimeout('stat()',2);
 }
 function fix(){
-	//ÂsÄı¾¹°»´ú navigator.appName ¤º³¡½s½X¦WºÙ...¤£­n¦A¨Ï¥Î
-	//appName ÂsÄı¾¹ªº¥¿¦¡¦WºÙ
-	//navigator.appName IE ¶Ç¦^ Microsoft Internet Explorer, IE11 ¶Ç¦^ Netscape
-	//Firefox, Safari, Chrome §¡¶Ç¦^ Netscape¡FOpera ¶Ç¦^ Opera	
+	//ç€è¦½å™¨åµæ¸¬ navigator.appName å…§éƒ¨ç·¨ç¢¼åç¨±...ä¸è¦å†ä½¿ç”¨
+	//appName ç€è¦½å™¨çš„æ­£å¼åç¨±
+	//navigator.appName IE å‚³å› Microsoft Internet Explorer, IE11 å‚³å› Netscape
+	//Firefox, Safari, Chrome å‡å‚³å› Netscapeï¼›Opera å‚³å› Opera	
 	
 	if(document.getElementById('bar1')!=null){
 		var a=document.body.scrollTop-document.getElementById('bar1').offsetHeight+30;
@@ -98,7 +97,7 @@ function fix(){
 	}
 }
 //******************************************************************************
-<!--ºô­¶ªì©l¤Æ-->
+<!--ç¶²é åˆå§‹åŒ–-->
 function initApp(){
 	if(window.opener == null) {
 		fix();
@@ -108,7 +107,7 @@ function initApp(){
 	AddHotKey();
 }
 //******************************************************************************
-<!--¬d¸ß-->
+<!--æŸ¥è©¢-->
 function action_query(form, btn){
 
 	clearAllINPUT(form);		
@@ -116,7 +115,7 @@ function action_query(form, btn){
 	validator.errHandler = new AlertHandler();
 	
 	if(form.DIV_NO.value == ''){
-		validator.define("DIV_NO","","½Ğ¿é¤J¥¿½T³æ¦ì¥N¸¹","string","-1","-1");
+		validator.define("DIV_NO","","è«‹è¼¸å…¥æ­£ç¢ºå–®ä½ä»£è™Ÿ","string","-1","-1");
 	}
 	
 	validator.errHandler.clear();
@@ -125,9 +124,9 @@ function action_query(form, btn){
 		return false;
 	}
 	if(form.OPR_ID.value == '' || form.OPR_ID.value != '<c:out value="${jvm.USER_ID}" />'){
-		var agree=confirm("±z©Ò¬d¸ßªº±ø¥ó¥i¯à¥]¬A«D¥»¤H¼v¹³¤W¶Ç¥ó¡C\n"
-							+ "½Ğª`·N¦P¤@ÂkÀÉ§å¸¹¡A¤£¥i¨â¤H¦P®É°µ¸Ë½c½T»{¡C\n"
-							+ "«ö¡y½T©w¡z°õ¦æ¬d¸ß§@·~¡A«ö¡y¨ú®ø¡z°±¤î¬d¸ß§@·~"
+		var agree=confirm("æ‚¨æ‰€æŸ¥è©¢çš„æ¢ä»¶å¯èƒ½åŒ…æ‹¬éæœ¬äººå½±åƒä¸Šå‚³ä»¶ã€‚\n"
+							+ "è«‹æ³¨æ„åŒä¸€æ­¸æª”æ‰¹è™Ÿï¼Œä¸å¯å…©äººåŒæ™‚åšè£ç®±ç¢ºèªã€‚\n"
+							+ "æŒ‰ã€ç¢ºå®šã€åŸ·è¡ŒæŸ¥è©¢ä½œæ¥­ï¼ŒæŒ‰ã€å–æ¶ˆã€åœæ­¢æŸ¥è©¢ä½œæ¥­"
 							);
 		if (agree == false){
 			return false;
@@ -141,14 +140,14 @@ function action_query(form, btn){
 	return true;	
 }
 //******************************************************************************
-<!--Åª¨úÀÉ®×-->
+<!--è®€å–æª”æ¡ˆ-->
 function action_readfile(form, btn){
 
 	
 	if(form.DIV_NO.value != form.DIV_NO_HIDDEN.value
 		|| getIMG_KIND_OPT() != form.IMG_KIND_HIDDEN.value
 		|| form.OPR_ID.value != form.OPR_ID_HIDDEN.value){
-		alert('¬d¸ßÂkÀÉ§å¸¹Áä­È§ïÅÜ¡A½Ğ­«·s ¬d¸ßÂkÀÉ§å¸¹ ¦A°µ Åª¨úÀÉ®×');
+		alert('æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿéµå€¼æ”¹è®Šï¼Œè«‹é‡æ–° æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿ å†åš è®€å–æª”æ¡ˆ');
 		return false;
 	}
 
@@ -158,17 +157,17 @@ function action_readfile(form, btn){
 	return true;	
 }
 //******************************************************************************
-<!--«Ê½c¶i¸¹-->
+<!--å°ç®±é€²è™Ÿ-->
 function action_close(form, btn){
 
 	
 	if(form.DIV_NO.value != form.DIV_NO_HIDDEN.value
 		|| getIMG_KIND_OPT() != form.IMG_KIND_HIDDEN.value){
-		alert('¬d¸ßÂkÀÉ§å¸¹Áä­È§ïÅÜ¡A½Ğ­«·s ¬d¸ßÂkÀÉ§å¸¹ ¦A°µ «Ê½c¶i¸¹');
+		alert('æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿéµå€¼æ”¹è®Šï¼Œè«‹é‡æ–° æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿ å†åš å°ç®±é€²è™Ÿ');
 		return false;
 	}
 
-	//3.3	°õ¦æStep 5 ¦C¦L½c¸¹±ø½X¡C(960903·s¼W)
+	//3.3	åŸ·è¡ŒStep 5 åˆ—å°ç®±è™Ÿæ¢ç¢¼ã€‚(960903æ–°å¢)
 	action_print_box(form, btn);
 		 					
 	new Ajax.Request(
@@ -195,21 +194,21 @@ function action_close(form, btn){
 	);	
 }
 //******************************************************************************
-<!--¸Ë½c½T»{-->
+<!--è£ç®±ç¢ºèª-->
 function action_confirm(form, btn){
 
 	
 	if(form.DIV_NO.value != form.DIV_NO_HIDDEN.value
 		|| getIMG_KIND_OPT() != form.IMG_KIND_HIDDEN.value
 		|| getBCHNO() != form.BCHNO_HIDDEN.value){
-		alert('¬d¸ßÂkÀÉ§å¸¹Áä­È§ïÅÜ¡A½Ğ­«·s ¬d¸ßÂkÀÉ§å¸¹ Åª¨úÀÉ®× ¦A°µ ¸Ë½c½T»{');
+		alert('æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿéµå€¼æ”¹è®Šï¼Œè«‹é‡æ–° æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿ è®€å–æª”æ¡ˆ å†åš è£ç®±ç¢ºèª');
 		return false;
 	}
 
 	if('<c:out value="${jvm.DB_OPR_ID}" />' != '<c:out value="${jvm.USER_ID}" />'){
-		var agree=confirm("±z©Ò³B²zªºÂkÀÉ§å¸¹¬°[<c:out value="${jvm.DB_OPR_ID}" />]¤W¶Ç¡A«D¥»¤H¼v¹³¤W¶Ç¥ó¡C\n"
-							+ "½Ğª`·N¦P¤@ÂkÀÉ§å¸¹¡A¤£¥i¨â¤H¦P®É°µ¸Ë½c½T»{¡C\n"
-							+ "«ö¡y½T©w¡z°õ¦æ¸Ë½c½T»{§@·~¡A«ö¡y¨ú®ø¡z°±¤î¸Ë½c½T»{§@·~" 
+		var agree=confirm("æ‚¨æ‰€è™•ç†çš„æ­¸æª”æ‰¹è™Ÿç‚º[<c:out value="${jvm.DB_OPR_ID}" />]ä¸Šå‚³ï¼Œéæœ¬äººå½±åƒä¸Šå‚³ä»¶ã€‚\n"
+							+ "è«‹æ³¨æ„åŒä¸€æ­¸æª”æ‰¹è™Ÿï¼Œä¸å¯å…©äººåŒæ™‚åšè£ç®±ç¢ºèªã€‚\n"
+							+ "æŒ‰ã€ç¢ºå®šã€åŸ·è¡Œè£ç®±ç¢ºèªä½œæ¥­ï¼ŒæŒ‰ã€å–æ¶ˆã€åœæ­¢è£ç®±ç¢ºèªä½œæ¥­" 
 							);
 		if (agree == false){
 			return false;
@@ -229,12 +228,12 @@ function action_confirm(form, btn){
 					}else{
 
 						if(resp.IS_FIND == 'N'){
-							var agree=confirm('1. ´£¿ô¦¹µ§³æ¾Ú(' 
+							var agree=confirm('1. æé†’æ­¤ç­†å–®æ“š(' 
 													+ getIMG_KIND_OPT() 
 													+ ',' 
 													+  resp.BARCODE 
-													+ ')¥¼§¹¦¨ÂI¥æÂI¦¬,«ö[½T©w]«ö¶s¤´¥iÄ~Äò¼v¹³ÂkÀÉ'
-													+'\n \n \n'+'2. «áÄò½Ğ¦Ü¡u¤å¥ó¦^¦¬³øªí/²§±`³øªí(¦h¥ó)¡v§@·~½T»{ ');
+													+ ')æœªå®Œæˆé»äº¤é»æ”¶,æŒ‰[ç¢ºå®š]æŒ‰éˆ•ä»å¯ç¹¼çºŒå½±åƒæ­¸æª”'
+													+'\n \n \n'+'2. å¾ŒçºŒè«‹è‡³ã€Œæ–‡ä»¶å›æ”¶å ±è¡¨/ç•°å¸¸å ±è¡¨(å¤šä»¶)ã€ä½œæ¥­ç¢ºèª ');
 							if (!agree){
 								return false;
 							}		
@@ -260,11 +259,11 @@ function action_confirm(form, btn){
 											   			, 'subwin'
 											   			, windowParams); 
 											   	
-											   	//Åã¥Ü§@·~°T®§
+											   	//é¡¯ç¤ºä½œæ¥­è¨Šæ¯
 											   	var msgBoard = CSRUtil.getMsgBoard();
-												msgBoard.innerHTML='¸Ë½c½T»{§¹¦¨';
+												msgBoard.innerHTML='è£ç®±ç¢ºèªå®Œæˆ';
 												
-												//disabled ½T»{¶s ÀÉ®×Åª¨ú¶s
+												//disabled ç¢ºèªéˆ• æª”æ¡ˆè®€å–éˆ•
 												$('readfile_btn').disabled = true;
 												$('confirm_btn').disabled = true;
 						 						$('BCHNO_OPT_REMOVE').value = getBCHNO_OPT();
@@ -295,11 +294,11 @@ function action_confirm(form, btn){
 											   			, 'subwin'
 											   			, windowParams); 
 											   	
-											   	//Åã¥Ü§@·~°T®§
+											   	//é¡¯ç¤ºä½œæ¥­è¨Šæ¯
 											   	var msgBoard = CSRUtil.getMsgBoard();
-												msgBoard.innerHTML='¸Ë½c½T»{§¹¦¨';
+												msgBoard.innerHTML='è£ç®±ç¢ºèªå®Œæˆ';
 												
-												//disabled ½T»{¶s ÀÉ®×Åª¨ú¶s
+												//disabled ç¢ºèªéˆ• æª”æ¡ˆè®€å–éˆ•
 												$('readfile_btn').disabled = true;
 												$('confirm_btn').disabled = true;
 						 						$('BCHNO_OPT_REMOVE').value = getBCHNO_OPT();
@@ -323,10 +322,10 @@ function action_confirm(form, btn){
 }
 
 //******************************************************************************
-<!--ÅÜ§ó ÂkÀÉ§å¸¹-->
+<!--è®Šæ›´ æ­¸æª”æ‰¹è™Ÿ-->
 function action_chgBCHNO_OPT(){
 	
-	//¦^´_ ÀÉ®×Åª¨ú«eª¬ºA
+	//å›å¾© æª”æ¡ˆè®€å–å‰ç‹€æ…‹
 	$('readfile_btn').disabled = false;
 	$('print_bchno_btn').disabled = true;
 	$('print_boxserno_btn').disabled = true;
@@ -339,7 +338,7 @@ function action_chgBCHNO_OPT(){
 	$('BOX_SER_NO').value = '';
 	$('textarea').value = '';
 			
-	//²¾°£Option ¤¤ ¤w¸g ½T»{¹Lªº
+	//ç§»é™¤Option ä¸­ å·²ç¶“ ç¢ºèªéçš„
 	for(var i=0; i<$('BCHNO_OPT').length ; i++){
 		if($('BCHNO_OPT')[i].value == $('BCHNO_OPT_REMOVE').value){
 			$('BCHNO_OPT').remove(i);
@@ -349,7 +348,7 @@ function action_chgBCHNO_OPT(){
 	
 }
 //******************************************************************************
-<!--Åª¨úÂkÀÉ§å¸¹ ¤U©ÔOption ­È-->
+<!--è®€å–æ­¸æª”æ‰¹è™Ÿ ä¸‹æ‹‰Option å€¼-->
 function getBCHNO_OPT(){
 	for(var i=0; i<$('BCHNO_OPT').length ; i++){
 		if($('BCHNO_OPT')[i].selected == true){
@@ -358,7 +357,7 @@ function getBCHNO_OPT(){
 	}
 }
 //******************************************************************************
-<!--¨ú±o¤å¥ó¥N½X-->
+<!--å–å¾—æ–‡ä»¶ä»£ç¢¼-->
 function getIMG_KIND_OPT(){
 	var IMG_KIND_OPT = document.getElementsByName('IMG_KIND_OPT');
 
@@ -369,7 +368,7 @@ function getIMG_KIND_OPT(){
 	}
 }
 //******************************************************************************
-<!--¨ú±oÂkÀÉ§å¸¹-->
+<!--å–å¾—æ­¸æª”æ‰¹è™Ÿ-->
 function getBCHNO(){
 	var BCHNO_OPT = document.getElementsByName('BCHNO_OPT');
 
@@ -380,13 +379,13 @@ function getBCHNO(){
 	}
 }
 //******************************************************************************
-<!--¦C¦L½c¸¹-->
+<!--åˆ—å°ç®±è™Ÿ-->
 function action_print_box(form, btn){
 
 	if(form.DIV_NO.value != form.DIV_NO_HIDDEN.value
 		|| getIMG_KIND_OPT() != form.IMG_KIND_HIDDEN.value
 		|| getBCHNO() != form.BCHNO_HIDDEN.value){
-		alert('¬d¸ßÂkÀÉ§å¸¹Áä­È§ïÅÜ¡A½Ğ­«·s ¬d¸ßÂkÀÉ§å¸¹ Åª¨úÀÉ®× ¦A°µ ¦C¦L½c¸¹');
+		alert('æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿéµå€¼æ”¹è®Šï¼Œè«‹é‡æ–° æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿ è®€å–æª”æ¡ˆ å†åš åˆ—å°ç®±è™Ÿ');
 		return false;
 	}
 	
@@ -400,13 +399,13 @@ function action_print_box(form, btn){
    			, windowParams); 
 }
 //******************************************************************************
-<!--¦C¦L§å¸¹±ø½X-->
+<!--åˆ—å°æ‰¹è™Ÿæ¢ç¢¼-->
 function action_print_bch(form, btn){
 
 	if(form.DIV_NO.value != form.DIV_NO_HIDDEN.value
 		|| getIMG_KIND_OPT() != form.IMG_KIND_HIDDEN.value
 		|| getBCHNO() != form.BCHNO_HIDDEN.value){
-		alert('¬d¸ßÂkÀÉ§å¸¹Áä­È§ïÅÜ¡A½Ğ­«·s ¬d¸ßÂkÀÉ§å¸¹ Åª¨úÀÉ®× ¦A°µ §å¸¹±ø½X');
+		alert('æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿéµå€¼æ”¹è®Šï¼Œè«‹é‡æ–° æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿ è®€å–æª”æ¡ˆ å†åš æ‰¹è™Ÿæ¢ç¢¼');
 		return false;
 	}
 	
@@ -437,15 +436,15 @@ function action_print_bch(form, btn){
 	popupWin.windowOpen('<%=dispatcher%>/AVE0_5800/printbch', opts);					
 }
 //******************************************************************************
-<!--¥u¯à¿é¤J¼Æ¦r-->
+<!--åªèƒ½è¼¸å…¥æ•¸å­—-->
 function numberOnly(){
 	return (event.keyCode > 47 && event.keyCode < 58 );
 }
 //******************************************************************************
-<!--±NFORM ¤¤ ©Ò¦³INPUT Äæ¦ìÃC¦â¦^´_ -->
+<!--å°‡FORM ä¸­ æ‰€æœ‰INPUT æ¬„ä½é¡è‰²å›å¾© -->
 function clearAllINPUT(form){
 	if (document.all || document.getElementById){
-	/* ¨ú¥X«ü©w form ¤¤©Ò¦³ªºinput type=text ²M°£ÃC¦â¬°¥Õ¦â */
+	/* å–å‡ºæŒ‡å®š form ä¸­æ‰€æœ‰çš„input type=text æ¸…é™¤é¡è‰²ç‚ºç™½è‰² */
 		for (i=0;i<form.length;i++){
 			var tempobj=form.elements[i]
 			if(tempobj.type.toLowerCase()=="text"){
@@ -455,12 +454,12 @@ function clearAllINPUT(form){
 	}
 }
 //******************************************************************************
-<!--¼öÁä¥\¯à-->
+<!--ç†±éµåŠŸèƒ½-->
 function AddHotKey(){
 	HotKeys.addHotKey(Keys.F2   , new ButtonAction(document.forms[0].query_btn));		
 }
 //******************************************************************************
-<!--§R°£¼öÁä¥\¯à-->
+<!--åˆªé™¤ç†±éµåŠŸèƒ½-->
 function RemoveHotKey(){
 	HotKeys.removeHotKey(Keys.F2   , new ButtonAction(null));		
 }
@@ -469,7 +468,7 @@ function RemoveHotKey(){
 
 	<center>
 	
-		<!-- Bolck_1_Start ªí³æªº¶}ÀY ¥\¯à¦WºÙ µe­±½s¸¹-->
+		<!-- Bolck_1_Start è¡¨å–®çš„é–‹é ­ åŠŸèƒ½åç¨± ç•«é¢ç·¨è™Ÿ-->
 		
 		<span id="bar1" style="position: absolute; left: 0; top: 0; width: 100%; z-index: 9; visibility: visible">
 			<table width="100%" height="30" border="0" cellpadding="0" cellspacing="0">
@@ -484,9 +483,9 @@ function RemoveHotKey(){
 						</table>
 						<table width="100%" border="0" cellpadding="2" cellspacing="0"	class="subTitle">
 							<tr>
-								<td width="20" height="24"><div align="center"><font size="-5">¡´</font></div></td>
-								<td><b>¼v¹³ÂkÀÉ§@·~</b></td>
-								<td><div align="right">µe­±½s¸¹¡GAVE05800</div></td>
+								<td width="20" height="24"><div align="center"><font size="-5">â—</font></div></td>
+								<td><b>å½±åƒæ­¸æª”ä½œæ¥­</b></td>
+								<td><div align="right">ç•«é¢ç·¨è™Ÿï¼šAVE05800</div></td>
 							</tr>
 						</table>
 					</td>
@@ -498,7 +497,7 @@ function RemoveHotKey(){
 		
 		<!-- Bolck_1_ End-->
 		
-		<!-- Bolck_2_Start ªÅ¥Õ°Ï¶ô ª©­±¸õ¦æ-->
+		<!-- Bolck_2_Start ç©ºç™½å€å¡Š ç‰ˆé¢è·³è¡Œ-->
 		
 		<table width="100%" height="30" border="0" cellpadding="0" cellspacing="0">
 			<tr>	<td>&nbsp;</td></tr>
@@ -506,7 +505,7 @@ function RemoveHotKey(){
 		
 		<!-- Bolck_2_End-->
 		
-		<!-- Bolck_3_Start ªí³æ¥D¥\¯à°Ï¶ô-->
+		<!-- Bolck_3_Start è¡¨å–®ä¸»åŠŸèƒ½å€å¡Š-->
 		<table width="100%" height="100%" border="0" cellpadding="0"	cellspacing="0">
 			<tr>
 				<td width="4" background="<%=imageBase%>/CM/border_01.gif"><img src="<%=imageBase%>/CM/border_01.gif" width="4" height="12"></td>
@@ -517,33 +516,33 @@ function RemoveHotKey(){
 								<table width=97% border=0 align=center cellpadding="5" cellspacing="1" bgcolor="#003366" >									
 									<tbody>
 										<tr>
-											<td class="tbBox2"><img src="<%=imageBase%>/CM/icon_dot11.gif" width="18" height="16">¼v¹³ÂkÀÉ§@·~</td>
+											<td class="tbBox2"><img src="<%=imageBase%>/CM/icon_dot11.gif" width="18" height="16">å½±åƒæ­¸æª”ä½œæ¥­</td>
 										</tr>
 										<tr bgcolor=#FFFFFF>
 											<td >
 										
-												<!-- Bolck_4_Start ¿é¤J°Ï¶ô-->
+												<!-- Bolck_4_Start è¼¸å…¥å€å¡Š-->
 										
 												<form name="main" id="main" method="post" action="">
 
 													<table width="100%" border="0" cellpadding="0" cellspacing="1" class="tbBox2">
 														<tr>
-															<td width="15%" class="tbYellow">³æ¦ì¥N¸¹</td>
+															<td width="15%" class="tbYellow">å–®ä½ä»£è™Ÿ</td>
 															<td class="tbYellow2">
 																<input name="DIV_NO" type="text" class="textBox2" value="<c:out value="${jvm.DIV_NO}" />" size="10" maxlength="8" onblur="html.toUppercase(this)">
 																<input name="DIV_NO_HIDDEN" type="hidden" value="<c:out value="${jvm.DIV_NO}" />" >
 															</td>
-															<td width="15%" class="tbYellow">¼v¹³¤W¶Ç¤H­û</td>
+															<td width="15%" class="tbYellow">å½±åƒä¸Šå‚³äººå“¡</td>
 															<td class="tbYellow2">
 																<input name="OPR_ID" type="text" class="textBox2" value="<c:out value="${jvm.OPR_ID}" />" size="12" maxlength="10" onblur="html.toUppercase(this)">
 																<input name="OPR_ID_HIDDEN" type="hidden" value="<c:out value="${jvm.OPR_ID}" />" >															
 															</td>
 															<td width="10%" class="tbYellow2" rowspan="2">
-																<input name="query_btn" id="query_btn" type="button" class="button" value="F2¬d¸ßÂkÀÉ§å¸¹" onClick="action_query(this.form, this)" disabled>
+																<input name="query_btn" id="query_btn" type="button" class="button" value="F2æŸ¥è©¢æ­¸æª”æ‰¹è™Ÿ" onClick="action_query(this.form, this)" disabled>
 															</td>
 														</tr>
 														<tr>
-															<td class="tbYellow">¤å¥ó¥N½X</td>
+															<td class="tbYellow">æ–‡ä»¶ä»£ç¢¼</td>
 															<td class="tbYellow2" colspan="3">
 																<select name="IMG_KIND_OPT" id="IMG_KIND_OPT" TABINDEX="1" class="textBox2" onChange="">                  	
 																	<%=IMG_KIND_OPT.getOptionHtml(IMG_KIND_VALUE)%>
@@ -553,7 +552,7 @@ function RemoveHotKey(){
 															</td>
 														</tr>
 														<tr>
-															<td class="tbYellow">ÂkÀÉ§å¸¹</td>
+															<td class="tbYellow">æ­¸æª”æ‰¹è™Ÿ</td>
 															<td class="tbYellow2"  colspan="3">
 																<select name="BCHNO_OPT" id="BCHNO_OPT" TABINDEX="1" class="textBox2" onChange="action_chgBCHNO_OPT()">            	
 																	<%=BCHNO_OPT.getOptionHtml(BCHNO_VALUE)%>
@@ -562,7 +561,7 @@ function RemoveHotKey(){
 																<input name="BCHNO_OPT_REMOVE" id="BCHNO_OPT_REMOVE" type="hidden" value="" >
 															</td>
 															<td width="10%" rowspan="2" class="tbYellow2">
-																<input id="readfile_btn" name="readfile_btn" type="button" class="button" value="Åª¨úÀÉ®×" onClick="action_readfile(this.form, this)" disabled>
+																<input id="readfile_btn" name="readfile_btn" type="button" class="button" value="è®€å–æª”æ¡ˆ" onClick="action_readfile(this.form, this)" disabled>
 															</td>
 															</tr>	
 															</td>
@@ -570,32 +569,32 @@ function RemoveHotKey(){
 													</table>	
 													<table width="100%" border="0" cellpadding="0" cellspacing="1" class="tbBox2">
 														<tr>
-															<td width="15%" class="tbYellow">ÂkÀÉ§å¸¹</td>
+															<td width="15%" class="tbYellow">æ­¸æª”æ‰¹è™Ÿ</td>
 															<td colspan="2" class="tbYellow2">
 																<input name="BCH_NO_SHOW"  id="BCH_NO_SHOW" type="text" class="textBoxDisable" value="<c:out value="${jvm.BCH_NO_SHOW}" />" size="35" maxlength="35" readOnly>
 																<input name="BCH_NO" id="BCH_NO" type="hidden" value="<c:out value="${jvm.BCH_NO}" />" >
-																<input id="print_bchno_btn" name="print_bchno_btn" type="button" class="button" value="¦C¦L§å¸¹±ø½X" onClick="action_print_bch(this.form, this)" disabled>
+																<input id="print_bchno_btn" name="print_bchno_btn" type="button" class="button" value="åˆ—å°æ‰¹è™Ÿæ¢ç¢¼" onClick="action_print_bch(this.form, this)" disabled>
 															</td>
 														</tr>
 														<tr>
-															<td width="15%" class="tbYellow">§å¸¹¤º®e´y­z</td>
+															<td width="15%" class="tbYellow">æ‰¹è™Ÿå…§å®¹æè¿°</td>
 															<td colspan="2" class="tbYellow2">
 																<input name="BCH_MEMO" id="BCH_MEMO" type="text" class="textBox2" size="20" maxlength="25"/> 
 															</td>
 														</tr>
 														<tr >
-															<td class="tbYellow">¸Ë½c¸¹½X</td>
+															<td class="tbYellow">è£ç®±è™Ÿç¢¼</td>
 															<td colspan="2" class="tbYellow2">
 																<input name="BOX_SER_NO_SHOW"  id="BOX_SER_NO_SHOW" type="text" class="textBoxDisable" value="<c:out value="${jvm.BOX_SER_NO_SHOW}" />" size="35" maxlength="35" readOnly>
 																<input name="BOX_SER_NO" id="BOX_SER_NO" type="hidden" value="<c:out value="${jvm.BOX_SER_NO}" />" >
-																<input name="confirm_btn" id="confirm_btn" type="button" class="button" value="¸Ë½c½T»{" onClick="action_confirm(this.form, this)" disabled>
-																<input name="print_boxserno_btn" id="print_boxserno_btn" type="button" class="button" value="¦C¦L½c¸¹" onClick="action_print_box(this.form, this)" disabled>
-																<input name="close_btn" id="close_btn" type="button" class="button" value="«Ê½c¶i¸¹" onClick="action_close(this.form, this)" disabled>
- <a href="/CXLDocs/AV/AA_AVE05800Menu.doc">¼v¹³ÂkÀÉ§å¸¹(½c¸¹)¦C¦L°İÃD³B²z</a>
+																<input name="confirm_btn" id="confirm_btn" type="button" class="button" value="è£ç®±ç¢ºèª" onClick="action_confirm(this.form, this)" disabled>
+																<input name="print_boxserno_btn" id="print_boxserno_btn" type="button" class="button" value="åˆ—å°ç®±è™Ÿ" onClick="action_print_box(this.form, this)" disabled>
+																<input name="close_btn" id="close_btn" type="button" class="button" value="å°ç®±é€²è™Ÿ" onClick="action_close(this.form, this)" disabled>
+ <a href="/CkDocs/AV/AA_AVE05800Menu.doc">å½±åƒæ­¸æª”åˆ—å°å•é¡Œè™•ç†</a>
 															</td>
 														</tr>
 														<tr >
-															<td valign="top" class="tbYellow">¼v¹³ÂkÀÉ½s¸¹</td>
+															<td valign="top" class="tbYellow">å½±åƒæ­¸æª”ç·¨è™Ÿ</td>
 															<td colspan="2" class="tbYellow2">
 																<textarea name="textarea" id="textarea" cols="80" rows="10" class="textBox2" readOnly><c:out value="${jvm.DATA_STR}" /></textarea>
 																<input name="DATA_LIST" id="DATA_LIST" type="hidden" value="<c:out value="${jvm.DATA_LIST}" />" >
@@ -619,6 +618,6 @@ function RemoveHotKey(){
 		</table>
 		<!-- Bolck_3_End-->
 	</center>
-	<%@ include file="/html/CM/msgDisplayer.jsp" %><!--Åã¥Ü±µ¦¬¨ìªº¿ù»~°T®§-->
+	<%@ include file="/html/CM/msgDisplayer.jsp" %><!--é¡¯ç¤ºæ¥æ”¶åˆ°çš„éŒ¯èª¤è¨Šæ¯-->
 </BODY>
 </HTML>
