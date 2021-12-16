@@ -4,7 +4,7 @@
  
 <%@ include file="/html/CM/header.jsp" %> 
 
-<!-- Import resource°A∑sºWΩ–©Ò§U≠±  -->
+<!-- Import resource -->
 <%@ page import="java.util.*"%>  
 <%@ page import="com.ck.common.util.STRING"%>
 <%@ page import="com.ck.common.util.page.SelectOptUtil"%>
@@ -16,14 +16,11 @@
 <%@ page import="org.apache.log4j.*"%>
 
 <!--
-µ{¶°°GAVE01680.jsp  
-ß@™Ã°GKevin Chen
-•\Ø‡°Gºvπ≥Ω’æ\
-ßπ¶®°G2021/01/08
-ßÛ∑s°G
+AVE01680.jsp  
+Kevin Chen
 -->
 
-<!-- JSP Sriptlet °A∑sºWΩ–©Ò§U≠±™∫-->
+<!-- JSP Sriptlet -->
 <%!
 	static Logger log = Logger.getLogger("AVE01680.jsp");
 %>
@@ -33,35 +30,35 @@
 	RespCtxUtil ctxUtil=new RespCtxUtil(resp);	
 	
 	String IMG_KIND_VALUE ="";
-	SelectOptUtil IMG_KIND_OPT = ctxUtil.getOutputData_OptionList("IMG_KIND_OPT");	//§Â•Û•NΩX
+	SelectOptUtil IMG_KIND_OPT = ctxUtil.getOutputData_OptionList("IMG_KIND_OPT");	
 	
-	Map jvm = (Map)ctxt.getValue("jvm");						//µe≠±¨d∏ﬂµ≤™G
+	Map jvm = (Map)ctxt.getValue("jvm");						
 	if(jvm!=null){
 		pageContext.setAttribute("jvm",jvm);			
 		IMG_KIND_VALUE = jvm.get("IMG_KIND_VALUE").toString();
 	}
 	
-	List jvl = (List)ctxt.getValue("jvl");						//µe≠±¨d∏ﬂµ≤™G
+	List jvl = (List)ctxt.getValue("jvl");						
 	if(jvm!=null){
 		pageContext.setAttribute("jvl",jvl);
 	}
 %>
 	<meta http-equiv="Content-Type" content="text/html; charset=big5">
 	<title></title>
-	<!--∂◊§J•~≥°Javascript ªP css, ∑sºWΩ–©Ò§U≠±-->
+	<!--Javascript  css-->
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/AlertHandler.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/PageControllerObj.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/pageController.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/validation.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/Validator.js"></script>	
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/utility.js"></script>
-	<script language="JavaScript" src="<%=htmlBase%>/AV/js/html.js"></script>    <!-- HTML  ™∫§Ω•Œµ{¶°-->	
+	<script language="JavaScript" src="<%=htmlBase%>/AV/js/html.js"></script>    <!-- HTML-->	
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/ajax/prototype.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/ajax/CSRUtil.js"></script>
 	<script language="JavaScript" src="<%=htmlBase%>/CM/js/RPTUtil.js"></script>
 	<link href="<%=cssBase%>/cm.css" rel="stylesheet" type="text/css">
 
-<!--¶π∫Ù≠∂¶€´ÿ®œ•Œ™∫JavaScript ©Ò§U≠± -->
+<!--JavaScript -->
 
 <script language="JavaScript" type="text/JavaScript">
 html = new html();
@@ -69,20 +66,16 @@ var AVE01680 = {dispatcher: '/AVWeb/servlet/HttpDispatcher'};	//Ajax
 var caseWin;
 
 //*************************************************************************************************************
-<!--≠◊•øµe≠±-->
+
 function stat(){
-	//µ˘:firefox 3 §w∏g§£§‰¥©window.onresize°Aº»§£≥B≤z
+	
 	if(document.bar1!=null){
 		var a = pageYOffset+window.innerHeight-document.bar1.document.height-15;
 		document.bar1.top = a;
 	}
 	setTimeout('stat()',2);
 }
-function fix(){
-	//¬sƒ˝æπ∞ª¥˙ navigator.appName §∫≥°ΩsΩX¶W∫Ÿ...§£≠n¶A®œ•Œ
-	//appName ¬sƒ˝æπ™∫•ø¶°¶W∫Ÿ
-	//navigator.appName IE ∂«¶^ Microsoft Internet Explorer, IE11 ∂«¶^ Netscape
-	//Firefox, Safari, Chrome ß°∂«¶^ Netscape°FOpera ∂«¶^ Opera	
+function fix(){	
 	
 	if(document.getElementById('bar1')!=null){
 		var a=document.body.scrollTop-document.getElementById('bar1').offsetHeight+30;
@@ -92,12 +85,8 @@ function fix(){
 	}
 }
 //******************************************************************************
-<!--∫Ù≠∂™Ï©l§∆-->
+
 function initApp(){
-	
-	//<c:if test='${empty jvm.IS_PDF}'>
-	//	$('view_btn').disable();
-	//</c:if>
 	
 	if(window.opener == null) {
 		fix();
@@ -107,7 +96,7 @@ function initApp(){
 
 }
 //******************************************************************************
-<!--¨d∏ﬂ-->
+
 function action_query(form, btn){
 
 	clearAllINPUT(form);		
@@ -115,7 +104,7 @@ function action_query(form, btn){
 	validator.errHandler = new AlertHandler();
 	
 	if(form.RCPT_NO.value == ''){
-		validator.define('RCPT_NO','','Ω–øÈ§J•øΩT§Â•ÛΩs∏π','string','-1','-1');
+		validator.define('RCPT_NO','','please input no','string','-1','-1');
 	}
 	
 	validator.errHandler.clear();
@@ -128,12 +117,11 @@ function action_query(form, btn){
 	submitOnce(btn);
 }
 //******************************************************************************
-<!--∂}±“ºvπ≥¨yƒ˝µ¯µ°-->
-<%--2018-09-27 ºW•[isDownload∞—º∆•HßP¬_¨Oß_¨∞§U∏¸--%>
+
 function action_view(form, btn, FILE_PATH, isDownload){
 
 	if(FILE_PATH == ''){
-		alert('Ω–•˝¨d∏ﬂ');
+		alert('Query first');
 		return false;
 	}
 	
@@ -158,7 +146,7 @@ function action_view(form, btn, FILE_PATH, isDownload){
 					var resp = response.responseJSON;
 					if(CSRUtil.isSuccess(resp)){
 								
-						<%--§U∏¸--%>
+						
 						if (isDownload == 'T') {
 							if(resp.fileFullPath && ("" + resp.fileFullPath).match('^http[s]?:\/\/') ){
 								window.open(resp.fileFullPath);
@@ -235,7 +223,7 @@ function action_view(form, btn, FILE_PATH, isDownload){
 					var resp = response.responseJSON;
 					if(CSRUtil.isSuccess(resp)){
 								
-						<%--§U∏¸--%>
+						
 						if (isDownload == 'T') {
 							if(resp.fileFullPath && ("" + resp.fileFullPath).match('^http[s]?:\/\/') ){
 								window.open(resp.fileFullPath);
@@ -273,7 +261,7 @@ function action_view(form, btn, FILE_PATH, isDownload){
 						RPTUtil.executeSecurityPrintHandler(resp, true, beforeActions);
 						</c:when>
 						<c:otherwise>
-						<%--PCIDSS: JNLP ßÔ HTML5--%>
+						<%--PCIDSS: JNLP to HTML5--%>
 					    //resp['submitParam'] = { 'JNLP':'Y' };
 						RPTUtil.executeSecurityPrintHandler(resp, true, beforeActions);
 						</c:otherwise>
@@ -284,12 +272,12 @@ function action_view(form, btn, FILE_PATH, isDownload){
 		</c:otherwise>
 	</c:choose>
 }
-<!--√ˆ≥¨ºvπ≥µ¯µ°-->
+
 function closeImg(){
 	caseWin = null;
 }
 //*****************************************************************************
-<!--¬IøÔ≥Êæ⁄ß«∏π¨d∏ﬂ-->
+
 function action_link(IMG_KIND, DATA_KIND, RCPT_NO, IMG_KEY){
 
 
@@ -306,10 +294,10 @@ function action_link(IMG_KIND, DATA_KIND, RCPT_NO, IMG_KEY){
 
 }
 //*****************************************************************************
-<!--±NFORM §§ ©“¶≥INPUT ƒÊ¶Ï√C¶‚¶^¥_ -->
+
 function clearAllINPUT(form){
 	if (document.all || document.getElementById){
-	/* ®˙•X´¸©w form §§©“¶≥™∫input type=text ≤M∞£√C¶‚¨∞•’¶‚ */
+	
 		for (i=0;i<form.length;i++){
 			var tempobj=form.elements[i]
 			if(tempobj.type.toLowerCase()=='text'){
@@ -324,30 +312,30 @@ function changeQueryText(IMG_KIND) {
 	var queryText2 = document.getElementById("queryText2");
 	if(queryText){
 		if(IMG_KIND == "AB90" || IMG_KIND == "AB92") {
-			queryText.innerHTML = "(•”Ω–§HID)";
+			queryText.innerHTML = "(APPLY ID)";
 		} else if(IMG_KIND == "AB93") {
-			queryText.innerHTML = "(±¬≈v§HID)";
+			queryText.innerHTML = "(AUTH ID)";
 		} else if(IMG_KIND == "AB94") {
-			queryText.innerHTML = "(≥Q´O§HID)";
+			queryText.innerHTML = "(INSURE ID)";
 		} else if(IMG_KIND == "AB95" || IMG_KIND == "AB91" || IMG_KIND == "AB09" ) {		
-			queryText.innerHTML = "(´O≥Ê∏πΩX)";
+			queryText.innerHTML = "(PNO)";
 		} else if(IMG_KIND == "AB02") {		
-			queryText.innerHTML = "(®¸≤zΩs∏π)";
+			queryText.innerHTML = "(RNO)";
 		} else {
 			queryText.innerHTML = "";
 		}	
 	}
 	if(queryText2){
 		if(IMG_KIND == "AB90" || IMG_KIND == "AB92") {
-			queryText2.innerHTML = "(•”Ω–§HID)";
+			queryText2.innerHTML = "(APLID)";
 		} else if(IMG_KIND == "AB93") {
-			queryText2.innerHTML = "(±¬≈v§HID)";
+			queryText2.innerHTML = "(AUTHID)";
 		} else if(IMG_KIND == "AB94") {
-			queryText2.innerHTML = "(≥Q´O§HID)";
+			queryText2.innerHTML = "(INSUREID)";
 		} else if(IMG_KIND == "AB95" || IMG_KIND == "AB91" || IMG_KIND == "AB09" ) {		
-			queryText2.innerHTML = "(´O≥Ê∏πΩX)";
+			queryText2.innerHTML = "(PNO)";
 		} else if(IMG_KIND == "AB02") {		
-			queryText2.innerHTML = "(®¸≤zΩs∏π)";
+			queryText2.innerHTML = "(RNO)";
 		} else {
 			queryText2.innerHTML = "";
 		}
@@ -360,10 +348,8 @@ function changeQueryText(IMG_KIND) {
 <body bgcolor="#F0FBC6" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad='initApp();' onResize='fix()' onScroll="fix()" > 
 
 
-	<center>
-	
-		<!-- Bolck_1_Start ™Ì≥Ê™∫∂}¿Y •\Ø‡¶W∫Ÿ µe≠±Ωs∏π-->
-		
+	<center>	
+				
 		<span id="bar1" style="position: absolute; left: 0; top: 0; width: 100%; z-index: 9; visibility: visible">
 			<table width="100%" height="30" border="0" cellpadding="0" cellspacing="0">
 				<tr>
@@ -377,9 +363,9 @@ function changeQueryText(IMG_KIND) {
 						</table>
 						<table width="100%" border="0" cellpadding="2" cellspacing="0"	class="subTitle">
 							<tr>
-								<td width="20" height="24"><div align="center"><font size="-5">°¥</font></div></td>
-								<td><b>ºvπ≥Ω’æ\</b></td>
-								<td><div align="right">µe≠±Ωs∏π°GAVE01680</div></td>
+								<td width="20" height="24"><div align="center"><font size="-5">‚óè</font></div></td>
+								<td><b>IMAGE</b></td>
+								<td><div align="right">NOÔºöAVE01680</div></td>
 							</tr>
 						</table>
 					</td>
@@ -391,7 +377,7 @@ function changeQueryText(IMG_KIND) {
 		
 		<!-- Bolck_1_ End-->
 		
-		<!-- Bolck_2_Start ™≈•’∞œ∂Ù ™©≠±∏ı¶Ê-->
+		
 		
 		<table width="100%" height="30" border="0" cellpadding="0" cellspacing="0">
 			<tr>	<td>&nbsp;</td></tr>
@@ -399,7 +385,7 @@ function changeQueryText(IMG_KIND) {
 		
 		<!-- Bolck_2_End-->
 		
-		<!-- Bolck_3_Start ™Ì≥Ê•D•\Ø‡∞œ∂Ù-->
+		
 		<table width="100%" height="100%" border="0" cellpadding="0"	cellspacing="0">
 			<tr>
 				<td width="4" background="<%=imageBase%>/CM/border_01.gif"><img src="<%=imageBase%>/CM/border_01.gif" width="4" height="12"></td>
@@ -410,12 +396,12 @@ function changeQueryText(IMG_KIND) {
 								<table width=97% border=0 align=center cellpadding="5" cellspacing="1" bgcolor="#003366" >									
 									<tbody>
 										<tr>
-											<td class="tbBox2"><img src="<%=imageBase%>/CM/icon_dot11.gif" width="18" height="16">ºvπ≥Ω’æ\</td>
+											<td class="tbBox2"><img src="<%=imageBase%>/CM/icon_dot11.gif" width="18" height="16">IMG</td>
 										</tr>
 										<tr bgcolor=#FFFFFF>
 											<td >
 										
-												<!-- Bolck_4_Start øÈ§J∞œ∂Ù-->
+												
 	
 												<form name="main" id="main" method="post" action="">
 
@@ -428,13 +414,13 @@ function changeQueryText(IMG_KIND) {
 													<c:choose>
 														<c:when test="${jvm.LINK_TYPE == 'N'}">	
 												
-															<td class="tbYellow" width="15%">§Â•Û•NΩX</td>
+															<td class="tbYellow" width="15%">FILENO</td>
 															<td class="tbYellow2" >
 																<select name="IMG_KIND_OPT" id="IMG_KIND_OPT" TABINDEX="1" class="textBox2" onChange="changeQueryText(this.value)">                  	
 																	<%=IMG_KIND_OPT.getOptionHtml(IMG_KIND_VALUE)%>
 																</select>																																												
 															</td>
-															<td class="tbYellow" width="15%">§Â•ÛΩs∏π<span id="queryText"/></td>
+															<td class="tbYellow" width="15%">FILENO<span id="queryText"/></td>
 															<td class="tbYellow2" >																
 																<input name="RCPT_NO" type="text" class="textBox2" value="<c:out value="${jvm.RCPT_NO}" />" size="20" maxlength="30" onblur="html.toUppercase(this)">																
 															</td>
@@ -442,13 +428,13 @@ function changeQueryText(IMG_KIND) {
 														</c:when>																																										
 														<c:otherwise>												
 														
-															<td class="tbYellow" width="15%">§Â•Û•NΩX</td>
+															<td class="tbYellow" width="15%">FILENO</td>
 															<td class="tbYellow2" >
 																<select name="IMG_KIND_OPT" id="IMG_KIND_OPT" TABINDEX="1" class="textBox2" onChange="" >                  	
 																	<%=IMG_KIND_OPT.getOptionHtml(IMG_KIND_VALUE)%>
 																</select>																																												
 															</td>
-															<td class="tbYellow" width="15%">§Â•ÛΩs∏π<span id="queryText2" name="queryText2"/></td>
+															<td class="tbYellow" width="15%">FILENO<span id="queryText2" name="queryText2"/></td>
 															<td class="tbYellow2" >																
 																<input id="RCPT_NO" name="RCPT_NO" type="text" class="textBox2" value="<c:out value="${jvm.RCPT_NO}" />" size="20" maxlength="14" onblur="html.toUppercase(this)" readOnly>																
 															</td>
@@ -457,14 +443,14 @@ function changeQueryText(IMG_KIND) {
 													</c:choose>			
 												
 															<td class="tbYellow2">
-																	<input id="query_btn" type="button" class="button" value="¨d∏ﬂ" onClick="action_query(this.form, this)" >
+																	<input id="query_btn" type="button" class="button" value="QUERY" onClick="action_query(this.form, this)" >
 																</td>
 															</tr>		
 														</table>
 													
 													<table width="100%" border="0" cellpadding="0" cellspacing="1" class="tbBox2">
 														<tr>
-															<td class="tbYellow" >¨d∏ﬂµ≤™G≤M≥Ê</td>
+															<td class="tbYellow" >QUERYLIST</td>
 														</tr>		
 														<c:forEach var="viewData" items="${jvl}" varStatus="status" >  														
 															<ck:even><TR ID='ROWID' align="center" class='tbYellow2'> </ck:even>
@@ -480,39 +466,39 @@ function changeQueryText(IMG_KIND) {
 														<c:when test="${jvm.LINK_TYPE == 'N'}">
 													
 															<tr>
-																<td class="tbBlue2" width="15%">§Â•Û•NΩX</td>
+																<td class="tbBlue2" width="15%">FNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.IMG_KIND_LINK}" /></td>															
-																<td class="tbBlue2" width="15%">§Â•ÛΩs∏π(®¸≤zΩs∏π)</td>
+																<td class="tbBlue2" width="15%">RNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.RCPT_NO_LINK}" /></td>	
-																<td class="tbBlue2" width="15%">∏ÀΩcΩc∏π</td>
+																<td class="tbBlue2" width="15%">BNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.BOXNO}" /></td>										
 															</tr>
 															<tr>
-																<td class="tbBlue2" >¬k¿…≥B≤z≥Ê¶Ï•N∏π</td>
+																<td class="tbBlue2" >RDIV</td>
 																<td class="tbBlue3" ><c:out value="${jvm.PROCDIVNO}" /></td>															
-																<td class="tbBlue2" >¬k¿…ß@∑~§H≠˚</td>
+																<td class="tbBlue2" >RNAME</td>
 																<td class="tbBlue3" ><c:out value="${jvm.FILEOPERATOR}" /></td>	
-																<td class="tbBlue2" >¬k¿…§È¥¡</td>
+																<td class="tbBlue2" >RDATE</td>
 																<td class="tbBlue3" ><ck:calendar type="ROC" isInput="false" value="${jvm.FILEDATE}"/></td>															
 															</tr>		
 															<tr>														
-																<td class="tbBlue2" >¬k¿…ßÂ∏π</td>
+																<td class="tbBlue2" >RNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.BCHNO}" /></td>															
-																<td class="tbBlue2" >§Â•Ûºvπ≥¿…¶W</td>
+																<td class="tbBlue2" >FILENAME</td>
 																<td class="tbBlue3" ><c:out value="${jvm.IMGFILENAME}" /></td>															
-																<td class="tbBlue2" >µ˘∞OƒÊ§∫Æe</td>
+																<td class="tbBlue2" >NOTE</td>
 																<td class="tbBlue3" ><c:out value="${jvm.MEMOTEXT}" /></td>		
 															</tr>					
 															<tr>
-																<td class="tbBlue2" >•˙∫–Ωs∏π</td>
+																<td class="tbBlue2" >CNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.DVDNO}" /></td>															
-																<td class="tbBlue2" >∏ÀΩc§È¥¡</td>
+																<td class="tbBlue2" >BDATE</td>
 																<td class="tbBlue3" ><ck:calendar type="ROC" isInput="false" value="${jvm.BOXDATE}"/></td>															
-																<td class="tbBlue2" >∏ÀΩcß@∑~§H≠˚</td>
+																<td class="tbBlue2" >BOXNAME</td>
 																<td class="tbBlue3" ><c:out value="${jvm.BOXOPERATOR}" /></td>	
 															</tr>		
 															<tr>
-																<td class="tbBlue2" width="15%">ºvπ≥¶s©Ò∏ÙÆ|</td>
+																<td class="tbBlue2" width="15%">FILE</td>
 																<td class="tbBlue3" colspan="5"><c:out value="${jvm.IMGPATH}" /></td>															
 															</tr>																													
 
@@ -521,23 +507,23 @@ function changeQueryText(IMG_KIND) {
 														<c:otherwise>
 														
 															<tr>
-																<td class="tbBlue2" >¬k¿…§È¥¡</td>
+																<td class="tbBlue2" >FDATE</td>
 																<td class="tbBlue3" ><ck:calendar type="ROC" isInput="false" value="${jvm.FILEDATE}"/></td>															
-																<td class="tbBlue2" >¬k¿…ßÂ∏π</td>
+																<td class="tbBlue2" >FNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.BCHNO}" /></td>															
-																<td class="tbBlue2" >§Â•Ûºvπ≥¿…¶W</td>
+																<td class="tbBlue2" >FILENAME</td>
 																<td class="tbBlue3" ><c:out value="${jvm.IMGFILENAME}" /></td>
 															</tr>		
 															<tr>														
-																<td class="tbBlue2" >•˙∫–Ωs∏π</td>
+																<td class="tbBlue2" >CNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.DVDNO}" /></td>															
-																<td class="tbBlue2" >∏ÀΩc§È¥¡</td>
+																<td class="tbBlue2" >PDATE</td>
 																<td class="tbBlue3" ><ck:calendar type="ROC" isInput="false" value="${jvm.BOXDATE}"/></td>															
-																<td class="tbBlue2" >∏ÀΩcΩc∏π</td>
+																<td class="tbBlue2" >BOXNO</td>
 																<td class="tbBlue3" ><c:out value="${jvm.BOXNO}" /></td>		
 															</tr>						
 															<tr>
-																<td class="tbBlue2" width="15%">ºvπ≥¶s©Ò∏ÙÆ|</td>
+																<td class="tbBlue2" width="15%">IMG</td>
 																<td class="tbBlue3" colspan="5"><c:out value="${jvm.IMGPATH}" /></td>															
 															</tr>																													
 												
@@ -546,9 +532,9 @@ function changeQueryText(IMG_KIND) {
 													
 														<tr>
 															<td class="tbBlue3" colspan="6" align="center">
-																<input id="view_btn" type="button" class="button" value="∂}±“ºvπ≥¬sƒ˝µ¯µ°" onClick="action_view(this.form, this, '<c:out value="${jvm.IMGPATH}" />')" />
-																<%--2018-09-27 µe≠±¶h§@≠”[§U∏¸ºvπ≥]´ˆ∂s--%>
-																<input id="download_btn" type="button" class="button" value="§U∏¸ºvπ≥" onClick="action_view(this.form, this, '<c:out value="${jvm.IMGPATH}" />', 'T')" />
+																<input id="view_btn" type="button" class="button" value="OPEN" onClick="action_view(this.form, this, '<c:out value="${jvm.IMGPATH}" />')" />
+																
+																<input id="download_btn" type="button" class="button" value="DOWNLOAD" onClick="action_view(this.form, this, '<c:out value="${jvm.IMGPATH}" />', 'T')" />
 															</td>
 														</tr>																	
 													</table>
@@ -563,7 +549,7 @@ function changeQueryText(IMG_KIND) {
 			  <tr>
 				<td width="10%" bgcolor="#FFFFFF">
 					<font color="red">
-&nbsp;&nbsp;&nbsp;&nbsp;ª°©˙°G<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;NOTEÔºö<BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
 					</font>
 				</td>
@@ -579,6 +565,6 @@ function changeQueryText(IMG_KIND) {
 		</table>
 		<!-- Bolck_3_End-->
 	</center>
-	<%@ include file="/html/CM/msgDisplayer.jsp" %><!--≈„•‹±µ¶¨®Ï™∫ø˘ª~∞TÆß-->
+	<%@ include file="/html/CM/msgDisplayer.jsp" %>
 </BODY>
 </HTML>
